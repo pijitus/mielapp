@@ -1,376 +1,471 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[NOMBRE EMPRESA] | Premium Argentine Honey Export</title>
-    <meta name="description" content="High-quality Argentine honey for international export. Pure, sustainable, and certified.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Apícola Rossini | Argentine Honey Export</title>
+    
+    <meta name="description" content="Premium Argentine honey for global export. Certified quality: HACCP, Organic, SENASA.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Apícola Rossini | Argentine Honey Export">
+    <meta property="og:description" content="Premium Argentine honey for global export. Certified quality: HACCP, Organic, SENASA.">
+    <meta property="og:url" content="/">
+    <meta property="og:image" content="/img/hero/hero_1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apícola Rossini | Argentine Honey Export">
+    <meta name="twitter:description" content="Premium Argentine honey for global export. Certified quality: HACCP, Organic, SENASA.">
+    <meta name="twitter:image" content="/img/hero/hero_1.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        honeyGold: '#D4AF37',
-                        honeyCream: '#FDFBF7',
-                        honeyDark: '#1A1A1B',
+                        brandAmber: '#F59E0B',
+                        brandDeep: '#2D241E',
+                        brandSoft: '#FDF8F3',
                     },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
         }
     </script>
+
     <style>
-        /* Estilos para el slideshow del Hero */
-        #hero-header {
-            background-size: cover;
-            background-position: center;
-            transition: background-image 1s ease-in-out;
-        }
-        /* Clase para el idioma activo */
-        .lang-active {
-            color: #D4AF37; /* honeyGold */
-            font-weight: bold;
-            pointer-events: none;
-        }
-        /* Clase para el idioma inactivo */
-        .lang-inactive {
-            color: #9CA3AF; /* gray-400 */
-            cursor: pointer;
-        }
-        .lang-inactive:hover {
-            color: #D4AF37;
-        }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .cert-card { filter: grayscale(100%); transition: all 0.4s ease; opacity: 0.7; }
+        .cert-card:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-honeyCream text-honeyDark font-sans">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-serif font-bold tracking-wider flex items-center">
-                <span class="text-honeyGold mr-2">⬢</span> [EMPRESA]
+<body class="bg-brandSoft text-brandDeep font-['Inter'] antialiased">
+
+    <nav class="fixed w-full z-50 glass-nav border-b border-brandAmber/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <!--<div class="w-10 h-10 bg-brandAmber rounded-lg flex items-center justify-center text-white font-bold italic text-xl">AR</div>-->
+                <span id="brand-name" class="font-bold tracking-tighter text-xl uppercase">Rossini Beekeeping</span>
             </div>
             
-            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm uppercase tracking-widest">
-                <a href="#history" id="nav-story" class="hover:text-honeyGold transition">Story</a>
-                <a href="#products" id="nav-products" class="hover:text-honeyGold transition">Products</a>
-                <a href="#certifications" id="nav-quality" class="hover:text-honeyGold transition">Quality</a>
-                <a href="#contact" id="nav-contact" class="bg-honeyGold text-white px-5 py-3 rounded hover:bg-honeyDark transition shadow-md">Contact Us</a>
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#about" id="nav-about" class="text-sm font-semibold hover:text-brandAmber transition">About Us</a>
+                <a href="#quality" id="nav-quality" class="text-sm font-semibold hover:text-brandAmber transition">Quality</a>
+                <a href="#catalog" id="nav-catalog" class="text-sm font-semibold hover:text-brandAmber transition">Product</a>
+                <a href="#contact" id="nav-contact" class="bg-brandDeep text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-brandAmber transition duration-300">Contact us</a>
             </div>
-            
-            <div class="text-sm font-bold border-l pl-6 border-gray-300 ml-4 flex gap-2">
-                <span id="lang-en" onclick="changeLanguage('en')" class="lang-active">EN</span>
-                <span>|</span>
-                <span id="lang-es" onclick="changeLanguage('es')" class="lang-inactive">ES</span>
+
+            <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
+                <button onclick="changeLanguage('en')" class="text-xs font-bold transition" id="lang-en">EN</button>
+                <span class="text-gray-300">/</span>
+                <button onclick="changeLanguage('es')" class="text-xs font-bold opacity-40 transition" id="lang-es">ES</button>
             </div>
         </div>
     </nav>
 
-    <header id="hero-header" class="h-screen flex items-center justify-center text-white text-center px-4 pt-20 relative">
-        <div class="absolute inset-0 bg-black/40 z-0"></div>
+    <header class="relative min-h-screen flex items-center bg-brandDeep">
+        <div class="absolute inset-0 opacity-40 overflow-hidden">
+            <img src="img/hero/hero_1.jpeg" class="w-full h-full object-cover" alt="Honey background">
+        </div>
         
-        <div class="max-w-4xl animate-fade-in-up z-10 relative">
-            <h1 id="hero-title" class="font-serif text-5xl md:text-7xl mb-6 drop-shadow-lg leading-tight">The Golden Soul of the Argentine Pampas</h1>
-            <p id="hero-subtitle" class="text-xl md:text-2xl font-light mb-10 italic drop-shadow-md max-w-2xl mx-auto">Premium Export-Grade Honey. Pure, traceable, and directly from our hives to the world.</p>
-            <a href="#products" id="hero-cta" class="border-2 border-honeyGold bg-honeyGold hover:bg-transparent hover:text-honeyGold text-white font-bold py-4 px-10 rounded-full transition duration-300 uppercase tracking-widest shadow-lg hover:shadow-honeyGold/50 inline-block">View Catalog</a>
+        <div class="relative max-w-7xl mx-auto px-6 pt-20 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white space-y-8 animate-fade-in">
+                <span id="hero-badge" class="inline-block px-4 py-1 rounded-full border border-brandAmber text-brandAmber text-xs font-bold uppercase tracking-widest">Rossini Family</span>
+                <h1 id="hero-title" class="text-5xl md:text-7xl font-bold leading-tight">Authentic <span class='text-brandAmber font-light'>Argentine Honey</span> for the world.</h1>
+                <p id="hero-subtitle" class="text-lg text-gray-300 max-w-lg italic">Three decades of beekeeping excellence and family legacy.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" id="hero-cta-primary" class="bg-brandAmber text-brandDeep px-8 py-4 rounded-xl font-bold hover:bg-white transition transform active:scale-95">Get a Quote</a>
+                    <a href="#catalog" id="hero-cta-secondary" class="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition">View Products</a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="history" class="py-32 max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div class="pr-8">
-                <span id="story-badge" class="text-honeyGold font-semibold tracking-widest uppercase text-sm bg-honeyGold/10 px-3 py-1 rounded-full">Our Heritage</span>
-                <h2 id="story-title" class="font-serif text-4xl mt-4 mb-8">A Family Legacy in the Heart of Argentina</h2>
-                <p id="story-p1" class="text-gray-600 leading-relaxed mb-6 text-lg">
-                    Founded in the fertile lands of Argentina, our company represents three generations of beekeeping excellence. We combine traditional wisdom with modern technology to harvest honey that preserves the biodiversity of our native forests and pampas.
-                </p>
-                <p id="story-p2" class="text-gray-600 leading-relaxed text-lg">
-                    Our strategic location allows us to offer unique floral profiles, ensuring a 100% natural product, free of agrochemicals, and fully traceable from the honeycomb to the final shipment.
-                </p>
-            </div>
-            <div class="flex gap-6 h-full items-center justify-center">
-                <img src="https://media3.colourbox.com/NHMIIAcfxh7ao-2AH0gF9hCoX9bpaRhsxjT71Mn9w2Q/resize:fit:800:800:1/q:70/aHR0cHM6Ly9tZWRpYS5jb2xvdXJib3guY29tL0NsRjdvSEVTdXRYY25xekxGVEx1TVNKbEUtR3NVSnBnWVBTVG5iZldvZTgvcmVzaXplOmZpdDoxNjAwOjE2MDA6MS9wbGFpbi9teXMzL2NvbG91cmJveC5wbG92cGVubmluZy5maWxlL0NPTE9VUkJPWDYxMTM0MjYzLmpwZw==" class="w-1/2 h-96 object-cover rounded-2xl shadow-2xl transform md:-translate-y-8 hover:translate-y-0 transition duration-500" alt="Beekeeper holding frame">
-                <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&q=80&w=600" class="w-1/2 h-96 object-cover rounded-2xl shadow-2xl transform md:translate-y-8 hover:translate-y-0 transition duration-500" alt="Argentine Pampas landscape">
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:items-stretch">
+                <div class="relative flex flex-col gap-4 lg:h-full">
+                    <img src="img/nosotros/nosotros_2.jpeg" class="w-full min-h-[220px] rounded-[2rem] object-cover shadow-2xl lg:min-h-0 lg:flex-1" alt="Our Heritage">
+                    <img src="img/nosotros/nosotros.jpeg" class="w-full min-h-[220px] rounded-[2rem] object-cover shadow-2xl lg:min-h-0 lg:flex-1" alt="Our Heritage">
+                    <div class="absolute -bottom-6 -right-6 bg-brandAmber p-8 rounded-2xl text-white hidden md:block">
+                        <p class="text-4xl font-bold">30+</p>
+                        <p id="about-experience" class="text-xs uppercase font-bold tracking-widest">Years of Expertise</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h2 id="about-title" class="text-4xl font-bold text-brandDeep">Family Tradition, excellence in honey</h2>
+                    <p id="about-text-1" class="text-gray-600 leading-relaxed text-lg">Rossini Family is a beekeeping unit that has been operating under Good Apicultural Practices (BPL) for more than 30 years, knowing the national and international requirements of the product, which is monofloral carob honey. In addition to this honey, during different stages, other honeys are also obtained, such as: sunflower, wild forest (monte), calden, and molle, in different proportions depending on the year.</p>
+                    <p id="about-text-2" class="text-gray-600 leading-relaxed text-lg">During part of the year, the base is Lincoln, where the material is conditioned and all complementary activities are carried out that allow us to begin the high season during the first days of August.</p>
+                    <p id="about-text-3" class="text-gray-600 leading-relaxed text-lg">Logistics and planning are carried out in Lincoln because that is where everything starts and it is the firm's base city.</p>
+                    <p id="about-text-4" class="text-gray-600 leading-relaxed text-lg">The objective of achieving a monofloral honey leads us first to the province of La Pampa, where all our hives spend the winter in the city of Maisonave and its areas of influence; once the hive is fed, it is moved to the province of Mendoza in the area of Real del Padre. This allows the hives that have passed the winter to increase their population in order to have maximum productivity.</p>
+                    <p id="about-text-5" class="text-gray-600 leading-relaxed text-lg">All apiaries are permanently monitored by highly trained personnel with more than 30 years of experience in the sector. Any anomaly is detected immediately, which allows us to take immediate corrective action.</p>
+                    <p id="about-text-6" class="text-gray-600 leading-relaxed text-lg">Once our hives have an adequate population and the nucleation work is carried out in Mendoza, a large part of the productive mass sets course for the next transhumance that takes us to the province of Cordoba, and there the carob flowering starts, which is our main objective.</p>
+                    <p id="about-text-7" class="text-gray-600 leading-relaxed text-lg">All hives are distributed in fields previously prepared and suitable for the activity.</p>
+                    <p id="about-text-8" class="text-gray-600 leading-relaxed text-lg">After the flowering ends in the province of Cordoba, where contact is made with the first honey of the season, we return to the province of Mendoza pursuing our objective of carob honey, because in these latitudes the flowering is delayed; this allows us to go in search of honey with these characteristics once again.</p>
+                    <p id="about-text-9" class="text-gray-600 leading-relaxed text-lg">The planning and organizational capacity of our firm to achieve a honey with these characteristics is noteworthy.</p>
+                    <p id="about-text-10" class="text-gray-600 leading-relaxed text-lg">Extraction Room</p>
+                    <p id="about-text-11" class="text-gray-600 leading-relaxed text-lg">Since the end of 2024, the company has had an extraction room authorized for this activity.</p>
+                    <p id="about-text-12" class="text-gray-600 leading-relaxed text-lg">It is a room with all its machinery made of stainless steel, complying with both national and international legislation.</p>
+                    <p id="about-text-13" class="text-gray-600 leading-relaxed text-lg">Our goal and what the company aims for is to be able to transcend borders and bring our product to consumers who request it; being able to export our product to other countries is our objective.</p>
+                    <p id="about-text-14" class="text-gray-600 leading-relaxed text-lg">For this, season after season, we invest in and train each of the members of our company.</p>
+                    <div class="pt-4 grid grid-cols-2 gap-4">
+                        <div class="border-l-4 border-brandAmber pl-4">
+                            <h4 id="stat-1-title" class="font-bold">Pure Origin</h4>
+                            <p id="stat-1-desc" class="text-sm text-gray-400">100% Argentine</p>
+                        </div>
+                        <div class="border-l-4 border-brandAmber pl-4">
+                            <h4 id="stat-2-title" class="font-bold">Sustainable</h4>
+                            <p id="stat-2-desc" class="text-sm text-gray-400">Eco-friendly harvest</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="certifications" class="bg-white py-16 border-y border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-             <p id="certs-title" class="text-center text-gray-400 text-sm tracking-widest uppercase mb-8">Certified Quality for Global Markets</p>
-            <div class="flex flex-wrap justify-center md:justify-between items-center opacity-50 grayscale hover:grayscale-0 transition duration-500 gap-8">
-                <div class="text-center font-bold text-xl border-2 border-gray-300 p-4 rounded-lg">SENASA <span class="block text-xs font-normal">Argentina</span></div>
-                <div class="text-center font-bold text-xl border-2 border-gray-300 p-4 rounded-lg">HACCP <span class="block text-xs font-normal">Certified</span></div>
-                <div class="text-center font-bold text-xl border-2 border-gray-300 p-4 rounded-lg">ORGANIC <span class="block text-xs font-normal">USDA / EU</span></div>
-                <div class="text-center font-bold text-xl border-2 border-gray-300 p-4 rounded-lg">FDA <span class="block text-xs font-normal">Registered</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="products" class="py-32 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 id="prod-title" class="font-serif text-5xl mb-6">Export Catalog</h2>
-                 <p id="prod-subtitle" class="text-gray-500 max-w-xl mx-auto">Discover our range of premium honey prepared specifically for international distributors and food manufacturers.</p>
-            </div>
+    <section id="quality" class="py-24 bg-brandSoft border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 id="quality-title" class="text-3xl font-bold mb-4 uppercase tracking-tighter">Global Quality Standards</h2>
+            <p id="quality-subtitle" class="text-gray-500 mb-16 max-w-2xl mx-auto">Our facilities and products are audited by major international and local agencies to ensure safety and quality in every shipment.</p>
             
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-white shadow-md hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/catalogo/image_3.png" alt="Multifloral Honey Jar" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                         <div class="absolute top-4 right-4 bg-white/90 text-honeyDark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Retail Ready</div>
-                    </div>
-                    <div class="p-8">
-                        <h3 id="p1-title" class="font-serif text-2xl mb-4 group-hover:text-honeyGold transition">Multifloral Honey</h3>
-                        <p id="p1-desc" class="text-gray-500 mb-6">The essence of our diverse prairies. Rich, balanced, and perfect for retail distribution. A versatile choice for any market.</p>
-                        <ul class="text-sm text-gray-500 space-y-2 border-t pt-6">
-                            <li class="flex items-center"><span class="text-honeyGold mr-2">✓</span> <span id="p1-spec1">Origin: Pampas Region</span></li>
-                            <li class="flex items-center"><span class="text-honeyGold mr-2">✓</span> <span id="p1-spec2">Color: Extra Light Amber (ELA)</span></li>
-                        </ul>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm cert-card flex flex-col items-center justify-center gap-4">
+                    <div class="h-16 w-full flex items-center justify-center font-black text-2xl text-gray-400">SENASA</div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400">Government Permit</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm cert-card flex flex-col items-center justify-center gap-4">
+                    <div class="h-16 w-full flex items-center justify-center font-black text-2xl text-gray-400">HACCP</div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400">Safety Certified</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm cert-card flex flex-col items-center justify-center gap-4">
+                    <div class="h-16 w-full flex items-center justify-center font-black text-2xl text-gray-400">FDA</div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400">US Registered</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm cert-card flex flex-col items-center justify-center gap-4">
+                    <div class="h-16 w-full flex items-center justify-center font-black text-2xl text-gray-400">ORGANIC</div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400">USDA / EU Standards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 id="catalog-title" class="text-4xl font-bold mb-4">Export Product</h2>
+                <p id="catalog-subtitle" class="text-gray-500">Tailored solutions for importers and food manufacturers.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-3 hover-lift bg-brandSoft p-8 rounded-3xl border border-brandAmber/20">
+                    <div class="h-72 mb-6 overflow-hidden rounded-2xl">
+                        <img src="img/catalogo/producto_1.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Bulk Honey">
                     </div>
                 </div>
+                <div class="md:col-span-3 hover-lift bg-brandSoft p-8 rounded-3xl border border-brandAmber/20">
+                    <div class="grid lg:grid-cols-2 gap-8 lg:items-stretch">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 id="p3-title" class="text-2xl font-bold mb-2">PRODUCT DESCRIPTION</h3>
+                                <p id="p3-desc" class="text-xs text-gray-500">Determination (Result/Unit)</p>
+                            </div>
+                            <div>
+                                <div class="grid sm:grid-cols-2 gap-3">
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100">
+                                        <p id="mono-hmf-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">HMF</p>
+                                        <p id="mono-hmf-value" class="font-semibold text-brandDeep text-sm">6,8%</p>
+                                    </div>
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100">
+                                        <p id="mono-moisture-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Moisture</p>
+                                        <p id="mono-moisture-value" class="font-semibold text-brandDeep text-sm">16.2%</p>
+                                    </div>
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100">
+                                        <p id="mono-color-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Color</p>
+                                        <p id="mono-color-value" class="font-semibold text-brandDeep text-sm">23 mmpfund</p>
+                                    </div>
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100">
+                                        <p id="mono-glyph-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Glyphosate</p>
+                                        <p id="mono-glyph-value" class="font-semibold text-brandDeep text-sm">6,8 Ppb</p>
+                                    </div>
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100">
+                                        <p id="mono-fructose-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Fructose</p>
+                                        <p id="mono-fructose-value" class="font-semibold text-brandDeep text-sm">39/40%</p>
+                                    </div>
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100">
+                                        <p id="mono-glucose-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Glucose</p>
+                                        <p id="mono-glucose-value" class="font-semibold text-brandDeep text-sm">32/33%</p>
+                                    </div>
+                                    <div class="bg-white rounded-2xl p-3.5 border border-gray-100 sm:col-span-2">
+                                        <p id="mono-conductivity-label" class="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Conductivity</p>
+                                        <p id="mono-conductivity-value" class="font-semibold text-brandDeep text-sm">0,45 uS</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="bg-white shadow-md hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group relative border-t-4 border-honeyGold">
-                     <div class="absolute top-4 right-4 bg-honeyGold text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Premium Select</div>
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/catalogo/image_4.png" alt="Eucalyptus Honey Jar" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-8">
-                        <h3 id="p2-title" class="font-serif text-2xl mb-4 group-hover:text-honeyGold transition">Eucalyptus Mono-floral</h3>
-                        <p id="p2-desc" class="text-gray-500 mb-6">Distinctive strong aroma with caramel notes and medicinal properties. Highly sought after in European and Asian markets.</p>
-                         <ul class="text-sm text-gray-500 space-y-2 border-t pt-6">
-                            <li class="flex items-center"><span class="text-honeyGold mr-2">✓</span> <span id="p2-spec1">Origin: Northern Argentine Forests</span></li>
-                            <li class="flex items-center"><span class="text-honeyGold mr-2">✓</span> <span id="p2-spec2">High Pollen Count Certified</span></li>
-                        </ul>
-                    </div>
-                </div>
+                            <div class="bg-white/80 rounded-2xl p-5">
+                                <h4 id="mono-sensory-title" class="font-bold text-base mb-3">Sensory Profile</h4>
+                                <ul class="space-y-2 text-sm text-gray-600 leading-relaxed">
+                                    <li id="mono-sensory-1"><strong>Crystallization:</strong> Fast-medium.</li>
+                                    <li id="mono-sensory-2"><strong>Aroma:</strong> Floral.</li>
+                                    <li id="mono-sensory-3"><strong>Properties:</strong> Antioxidant properties.</li>
+                                </ul>
+                            </div>
+                        </div>
 
-                <div class="bg-white shadow-md hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden group">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="img/catalogo/image_5.png" alt="Bulk Honey Drum" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                         <div class="absolute top-4 right-4 bg-honeyDark text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Industrial</div>
-                    </div>
-                    <div class="p-8">
-                        <h3 id="p3-title" class="font-serif text-2xl mb-4 group-hover:text-honeyGold transition">Bulk & Industrial</h3>
-                        <p id="p3-desc" class="text-gray-500 mb-6">High-volume solutions for food industry manufacturers and packers worldwide. Homogenized batches available.</p>
-                         <ul class="text-sm text-gray-500 space-y-2 border-t pt-6">
-                            <li class="flex items-center"><span class="text-honeyGold mr-2">✓</span> <span id="p3-spec1">Packaging: 300kg Steel Drums / IBC</span></li>
-                            <li class="flex items-center"><span class="text-honeyGold mr-2">✓</span> <span id="p3-spec2">Full Lab Analysis Included</span></li>
-                        </ul>
+                        <div class="overflow-hidden rounded-3xl min-h-[420px] lg:min-h-full">
+                            <img src="img/catalogo/producto_2.png" 
+                                class="block w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+                                alt="Product image">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 max-w-5xl mx-auto px-6 relative">
-        <div class="absolute -top-10 -left-10 text-honeyGold/10 text-9xl font-serif hidden md:block">“</div>
-        
-        <div class="bg-honeyDark text-white p-12 md:p-16 rounded-3xl shadow-2xl relative z-10 flex flex-wrap md:flex-nowrap gap-12">
-            <div class="md:w-1/3">
-                <h2 id="form-title" class="font-serif text-4xl mb-6 text-honeyGold">B2B Inquiry for Importers</h2>
-                <p id="form-subtitle" class="text-gray-400 mb-8 text-lg leading-relaxed">We specialize in international logistics. Let us know your requirements and we will provide a formal quote (FOB/CIF) within 24 hours.</p>
-                <div class="text-sm text-gray-400 space-y-2">
-                    <p>Email: export@[empresa].com.ar</p>
-                    <p>WhatsApp: +54 9 11 1234 5678</p>
-                </div>
-            </div>
+    <section id="contact" class="py-24 max-w-5xl mx-auto px-6">
+        <div class="bg-brandDeep rounded-[3rem] p-12 text-white text-center">
+            <h2 id="contact-title" class="text-4xl font-bold mb-6">Contact us</h2>
+            <form 
+                action="enviar.php" 
+                method="POST"
+                id="contact-form"
+                class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left"
+            >
+                <input type="text" name="company" placeholder="Company Name" required minlength="2" maxlength="120"
+                    class="bg-white/5 border border-white/10 p-4 rounded-xl focus:border-brandAmber outline-none text-white">
+                
+                <input type="email" name="email" placeholder="Corporate Email" required maxlength="120"
+                    class="bg-white/5 border border-white/10 p-4 rounded-xl focus:border-brandAmber outline-none text-white">
+                
+                <input type="text" name="country" placeholder="Destination Country" maxlength="80" pattern="[A-Za-zÀ-ÿ0-9 .,'-]{2,80}"
+                    class="bg-white/5 border border-white/10 p-4 rounded-xl focus:border-brandAmber outline-none text-white">
 
-            <form action="#" class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label id="label-name" class="block text-xs uppercase tracking-wider mb-3 text-honeyGold">Full Name *</label>
-                    <input type="text" class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:outline-none focus:border-honeyGold transition text-white" required>
-                </div>
-                <div>
-                    <label id="label-company" class="block text-xs uppercase tracking-wider mb-3 text-honeyGold">Company Name *</label>
-                    <input type="text" class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:outline-none focus:border-honeyGold transition text-white" required>
-                </div>
-                <div>
-                    <label id="label-country" class="block text-xs uppercase tracking-wider mb-3 text-honeyGold">Destination Country *</label>
-                    <input type="text" id="input-country" class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:outline-none focus:border-honeyGold transition text-white" placeholder="e.g. Germany, USA" required>
-                </div>
-                <div>
-                    <label id="label-product" class="block text-xs uppercase tracking-wider mb-3 text-honeyGold">Product Interest</label>
-                    <select class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:outline-none focus:border-honeyGold transition text-gray-300 cursor-pointer">
-                        <option id="opt-multi">Multifloral Honey</option>
-                        <option id="opt-euca">Eucalyptus Honey</option>
-                        <option id="opt-bulk">Bulk (Drums/IBC)</option>
-                        <option id="opt-other">Other</option>
-                    </select>
-                </div>
-                <div class="md:col-span-2">
-                    <label id="label-message" class="block text-xs uppercase tracking-wider mb-3 text-honeyGold">Message / Volume Requirements *</label>
-                    <textarea id="input-message" rows="4" class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:outline-none focus:border-honeyGold transition text-white" placeholder="Please indicate estimated annual volume needs..." required></textarea>
-                </div>
-                <button id="form-btn" class="md:col-span-2 bg-honeyGold hover:bg-white hover:text-honeyDark text-white font-bold py-5 rounded-lg transition duration-300 uppercase tracking-[0.2em] shadow-lg mt-4">Request Official Quote</button>
+                <select name="service" required class="bg-white/5 border border-white/10 p-4 rounded-xl focus:border-brandAmber outline-none text-gray-400">
+                    <option value="Bulk">Bulk Drums (300kg)</option>
+                    <option value="Retail">Retail Ready jars</option>
+                    <option value="PrivateLabel">Private Label Inquiry</option>
+                </select>
+
+                <textarea name="message" placeholder="Tell us about your requirements..." required minlength="10" maxlength="2000"
+                    class="md:col-span-2 bg-white/5 border border-white/10 p-4 rounded-xl h-32 text-white"></textarea>
+                
+                <input type="text" name="_gotcha" style="display:none" autocomplete="off" tabindex="-1" aria-hidden="true">
+                <input type="hidden" name="_ts" id="form-ts" value="">
+
+                <button type="submit" id="contact-btn" 
+                    class="md:col-span-2 bg-brandAmber text-brandDeep font-black p-5 rounded-xl hover:bg-white transition duration-300 uppercase tracking-widest cursor-pointer">
+                    Send Inquiry
+                </button>
             </form>
+
+            <div id="form-success" class="hidden mt-8 p-6 bg-green-500/20 border border-green-500 rounded-2xl text-green-400 font-bold">
+                ✓ Message sent successfully! We will contact you shortly.
+            </div>
         </div>
     </section>
 
-    <footer class="bg-honeyDark text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center md:text-left md:flex justify-between items-center">
-            <div class="mb-8 md:mb-0">
-                <div class="font-serif text-2xl mb-4 text-honeyGold">[NOMBRE EMPRESA]</div>
-                <p class="text-gray-400 text-sm">Headquarters: Buenos Aires Province, Argentina<br>Hives Location: Argentine Pampas & North</p>
-            </div>
-            
-            <div class="flex flex-col items-center md:items-end">
-                <div class="flex space-x-8 mb-6">
-                    <a href="#" class="text-gray-400 hover:text-honeyGold transition">LinkedIn</a>
-                    <a href="#" class="text-gray-400 hover:text-honeyGold transition">Instagram</a>
-                </div>
-                 <p class="text-xs text-gray-500 uppercase tracking-widest">© 2024 [EMPRESA]. All Rights Reserved. Pure Argentine Origin.</p>
-            </div>
-        </div>
+    <footer class="py-12 text-center text-gray-400 text-xs uppercase tracking-widest border-t border-gray-100">
+        <p id="footer-text">© 2026 Rossini Beekeeper - Argentine - Premium Honey Exporters</p>
     </footer>
 
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-honeyGold text-white w-12 h-12 rounded-full shadow-2xl opacity-0 transition-all duration-300 z-50 hover:bg-honeyDark flex items-center justify-center group" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-brandAmber text-brandDeep w-14 h-14 rounded-full shadow-2xl opacity-0 transition-all duration-500 z-50 hover:bg-brandDeep hover:text-white flex items-center justify-center scale-0" aria-label="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7" />
         </svg>
     </button>
 
     <script>
-        // --- HERO SLIDESHOW SCRIPT ---
-        const heroImages = [
-            'img/hero/image_0.png', // Apiary at sunset
-            'img/hero/image_1.png', // Honey flowing
-            'img/hero/image_2.png'  // Beekeeper with frame
-        ];
-        let currentImageIndex = 0;
-        const heroHeader = document.getElementById('hero-header');
-
-        function changeHeroImage() {
-            heroHeader.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
-            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-        }
-
-        // Set initial image and start interval
-        changeHeroImage();
-        setInterval(changeHeroImage, 5000); // Change image every 5 seconds
-
-
-        // --- LANGUAGE SWITCHER SCRIPT ---
         const translations = {
             en: {
-                nav: { story: "Story", products: "Products", quality: "Quality", contact: "Contact Us" },
-                hero: { title: "The Golden Soul of the Argentine Pampas", subtitle: "Premium Export-Grade Honey. Pure, traceable, and directly from our hives to the world.", cta: "View Catalog" },
-                story: { badge: "Our Heritage", title: "A Family Legacy in the Heart of Argentina", p1: "Founded in the fertile lands of Argentina, our company represents three generations of beekeeping excellence. We combine traditional wisdom with modern technology to harvest honey that preserves the biodiversity of our native forests and pampas.", p2: "Our strategic location allows us to offer unique floral profiles, ensuring a 100% natural product, free of agrochemicals, and fully traceable from the honeycomb to the final shipment." },
-                certs: { title: "Certified Quality for Global Markets" },
-                prod: { title: "Export Catalog", subtitle: "Discover our range of premium honey prepared specifically for international distributors and food manufacturers." },
-                p1: { title: "Multifloral Honey", desc: "The essence of our diverse prairies. Rich, balanced, and perfect for retail distribution. A versatile choice for any market.", spec1: "Origin: Pampas Region", spec2: "Color: Extra Light Amber (ELA)" },
-                p2: { title: "Eucalyptus Mono-floral", desc: "Distinctive strong aroma with caramel notes and medicinal properties. Highly sought after in European and Asian markets.", spec1: "Origin: Northern Argentine Forests", spec2: "High Pollen Count Certified" },
-                p3: { title: "Bulk & Industrial", desc: "High-volume solutions for food industry manufacturers and packers worldwide. Homogenized batches available.", spec1: "Packaging: 300kg Steel Drums / IBC", spec2: "Full Lab Analysis Included" },
-                form: { title: "B2B Inquiry for Importers", subtitle: "We specialize in international logistics. Let us know your requirements and we will provide a formal quote (FOB/CIF) within 24 hours.", labelName: "Full Name *", labelCompany: "Company Name *", labelCountry: "Destination Country *", inputCountryPlaceholder: "e.g. Germany, USA", labelProduct: "Product Interest", optMulti: "Multifloral Honey", optEuca: "Eucalyptus Honey", optBulk: "Bulk (Drums/IBC)", optOther: "Other", labelMessage: "Message / Volume Requirements *", inputMessagePlaceholder: "Please indicate estimated annual volume needs...", btn: "Request Official Quote" }
+                nav: { brand: "Rossini Beekeeping", about: "About Us", quality: "Quality", catalog: "Product", contact: "Contact us" },
+                hero: { badge: "Rossini family", title: "Authentic <span class='text-brandAmber font-light'>Argentine Honey</span> for the world.", subtitle: "Three decades of beekeeping excellence and family legacy.", ctaP: "Get a Quote", ctaS: "View Products" },
+                about: { title: "Family Tradition, excellence in honey", text1: "Rossini Family is a beekeeping unit that has been operating under Good Apicultural Practices (BPL) for more than 30 years, knowing the national and international requirements of the product, which is monofloral carob honey. In addition to this honey, during different stages, other honeys are also obtained, such as: sunflower, wild forest (monte), calden, and molle, in different proportions depending on the year.", text2: "During part of the year, the base is Lincoln, where the material is conditioned and all complementary activities are carried out that allow us to begin the high season during the first days of August.", text3: "Logistics and planning are carried out in Lincoln because that is where everything starts and it is the firm's base city.", text4: "The objective of achieving a monofloral honey leads us first to the province of La Pampa, where all our hives spend the winter in the city of Maisonave and its areas of influence; once the hive is fed, it is moved to the province of Mendoza in the area of Real del Padre. This allows the hives that have passed the winter to increase their population in order to have maximum productivity.", text5: "All apiaries are permanently monitored by highly trained personnel with more than 30 years of experience in the sector. Any anomaly is detected immediately, which allows us to take immediate corrective action.", text6: "Once our hives have an adequate population and the nucleation work is carried out in Mendoza, a large part of the productive mass sets course for the next transhumance that takes us to the province of Cordoba, and there the carob flowering starts, which is our main objective.", text7: "All hives are distributed in fields previously prepared and suitable for the activity.", text8: "After the flowering ends in the province of Cordoba, where contact is made with the first honey of the season, we return to the province of Mendoza pursuing our objective of carob honey, because in these latitudes the flowering is delayed; this allows us to go in search of honey with these characteristics once again.", text9: "The planning and organizational capacity of our firm to achieve a honey with these characteristics is noteworthy.", text10: "Extraction Room", text11: "Since the end of 2024, the company has had an extraction room authorized for this activity.", text12: "It is a room with all its machinery made of stainless steel, complying with both national and international legislation.", text13: "Our goal and what the company aims for is to be able to transcend borders and bring our product to consumers who request it; being able to export our product to other countries is our objective.", text14: "For this, season after season, we invest in and train each of the members of our company.", exp: "Years of Expertise", s1: "Pure Origin", s1d: "100% Argentine", s2: "Sustainable", s2d: "Eco-friendly harvest" },
+                quality: { title: "Global Quality Standards", subtitle: "Our facilities and products are audited by major international and local agencies to ensure safety and quality in every shipment." },
+                catalog: { title: "Export Product", subtitle: "Tailored solutions for importers and food manufacturers.", p1t: "Bulk Supply", p2t: "Retail Ready", p3t: "PRODUCT DESCRIPTION", p1: "300kg Steel Drums or IBC containers for industrial use.", p2: "Private label or our own brand in premium glass jars.", p3: "Determination (Result/Unit)", monoColorLabel: "Color", monoColorValue: "23 mmpfund", monoMoistureLabel: "Moisture", monoMoistureValue: "16.2%", monoHmfLabel: "HMF", monoHmfValue: "6,8%", monoGlyphLabel: "Glyphosate", monoGlyphValue: "6,8 Ppb", monoFructoseLabel: "Fructose", monoFructoseValue: "39/40%", monoGlucoseLabel: "Glucose", monoGlucoseValue: "32/33%", monoConductivityLabel: "Conductivity", monoConductivityValue: "0,45 uS", monoSensoryTitle: "Sensory Profile", monoSensory1: "<strong>Crystallization:</strong> Fast-medium.", monoSensory2: "<strong>Aroma:</strong> Floral.", monoSensory3: "<strong>Properties:</strong> Antioxidant properties." },
+                contact: { title: "Contact us", btn: "Send Inquiry" },
+                footer: { text: "© 2026 Rossini Beekeeper - Argentine - Premium Honey Exporters" }
             },
             es: {
-                nav: { story: "Historia", products: "Productos", quality: "Calidad", contact: "Contacto" },
-                hero: { title: "El Alma Dorada de la Pampa Argentina", subtitle: "Miel Premium de Calidad Exportación. Pura, trazable y directamente de nuestras colmenas al mundo.", cta: "Ver Catálogo" },
-                story: { badge: "Nuestra Herencia", title: "Un Legado Familiar en el Corazón de Argentina", p1: "Fundada en las tierras fértiles de Argentina, nuestra empresa representa tres generaciones de excelencia apícola. Combinamos la sabiduría tradicional con tecnología moderna para cosechar miel que preserva la biodiversidad de nuestros bosques y pampas nativas.", p2: "Nuestra ubicación estratégica nos permite ofrecer perfiles florales únicos, asegurando un producto 100% natural, libre de agroquímicos y totalmente trazable desde el panal hasta el embarque final." },
-                certs: { title: "Calidad Certificada para Mercados Globales" },
-                prod: { title: "Catálogo de Exportación", subtitle: "Descubra nuestra gama de miel premium preparada específicamente para distribuidores internacionales y fabricantes de alimentos." },
-                p1: { title: "Miel Multifloral", desc: "La esencia de nuestras diversas praderas. Rica, equilibrada y perfecta para distribución minorista. Una elección versátil para cualquier mercado.", spec1: "Origen: Región Pampeana", spec2: "Color: Ámbar Extra Claro (ELA)" },
-                p2: { title: "Miel de Eucalipto (Monofloral)", desc: "Distintivo aroma fuerte con notas de caramelo y propiedades medicinales. Muy solicitada en mercados europeos y asiáticos.", spec1: "Origen: Bosques del Norte Argentino", spec2: "Certificado de Alto Contenido Polínico" },
-                p3: { title: "Granel e Industrial", desc: "Soluciones de alto volumen para fabricantes de alimentos y envasadores de todo el mundo. Lotes homogeneizados disponibles.", spec1: "Envase: Tambores de Acero 300kg / IBC", spec2: "Análisis de Laboratorio Completo Incluido" },
-                form: { title: "Consulta B2B para Importadores", subtitle: "Nos especializamos en logística internacional. Indíquenos sus requerimientos y le proporcionaremos una cotización formal (FOB/CIF) en 24 horas.", labelName: "Nombre Completo *", labelCompany: "Nombre de la Empresa *", labelCountry: "País de Destino *", inputCountryPlaceholder: "ej. Alemania, EEUU", labelProduct: "Interés del Producto", optMulti: "Miel Multifloral", optEuca: "Miel de Eucalipto", optBulk: "Granel (Tambores/IBC)", optOther: "Otro", labelMessage: "Mensaje / Requerimientos de Volumen *", inputMessagePlaceholder: "Por favor indique necesidades estimadas de volumen anual...", btn: "Solicitar Cotización Oficial" }
+                nav: { brand: "Apícola Rossini", about: "Nosotros", quality: "Calidad", catalog: "Producto", contact: "Contáctanos" },
+                hero: { badge: "Familia Rossini", title: "Auténtica<br> <span class='text-brandAmber font-light'>Miel Argentina</span> para el mundo.", subtitle: "Tres décadas de excelencia apícola y legado familiar.", ctaP: "Solicitar Cotización", ctaS: "Ver Catálogo" },
+                about: { title: "Historia de la Empresa", text1: "Familia Rossini es una unidad apícola que trabaja bajo las Buenas Prácticas Apícolas (BPA) —y de manufactura— desde hace más de 30 años. Conocemos profundamente los requerimientos nacionales e internacionales para la producción de miel monofloral de algarrobo. Además de nuestra especialidad, obtenemos en distintas etapas otras variedades como girasol, monte, caldén y molle, en proporciones que varían según la temporada.", text2: "Nuestra base operativa se encuentra en Lincoln, provincia de Buenos Aires. Allí acondicionamos el material y realizamos todas las actividades complementarias que nos permiten iniciar la temporada alta durante los primeros días de agosto. Al ser nuestra ciudad de origen, Lincoln es el centro neurálgico donde se centraliza la logística y la planificación de la firma.", text3: "El objetivo de lograr una miel monofloral nos lleva, en primera instancia, a la provincia de La Pampa, donde nuestras colmenas realizan la invernada en la localidad de Maisonave y sus zonas de influencia. Una vez alimentadas, las colmenas son trasladadas a Mendoza, específicamente a la zona de Real del Padre; este movimiento permite que las colonias aumenten su población para alcanzar la máxima productividad.", text4: "Todos nuestros apiarios son monitoreados permanentemente por personal altamente capacitado con más de tres décadas de experiencia en el sector. Cualquier anomalía es detectada al instante, lo que nos permite ejecutar acciones correctivas inmediatas.", text5: "Con una población adecuada y tras realizar los trabajos de nucleación en Mendoza, gran parte de la masa productiva inicia la siguiente trashumancia hacia la provincia de Córdoba. Allí comienza la floración del algarrobo, nuestro principal objetivo. Para ello, las colmenas se distribuyen en campos previamente acondicionados y aptos para la actividad.", text6: "Al finalizar la floración en Córdoba, donde obtenemos la primera miel de la temporada, regresamos a la provincia de Mendoza. Perseguimos nuevamente la floración del algarrobo, ya que en estas latitudes el ciclo se retrasa, permitiéndonos buscar otra vez un producto de estas características. Es de destacar que la capacidad de planificación y organización de nuestra firma es lo que hace posible obtener una miel de tal excelencia.", text7: "Sala de extracción", text8: "Desde fines del año 2024, la empresa cuenta con una sala de extracción propia totalmente habilitada. Contamos con maquinaria de acero inoxidable de última generación que se adecua a las legislaciones tanto nacionales como internacionales.", text9: "Nuestra meta es trascender fronteras y llevar nuestro producto a los consumidores globales que lo soliciten. Exportar nuestra miel al mundo es el gran objetivo por el cual, campaña tras campaña, invertimos y capacitamos a cada uno de los integrantes de nuestra empresa.", text10: "", text11: "", text12: "", text13: "", text14: "", exp: "Años de Experiencia", s1: "Origen Puro", s1d: "100% Argentina", s2: "Sostenible", s2d: "Cosecha Responsable" },
+                quality: { title: "Estándares Globales de Calidad", subtitle: "Nuestras instalaciones y productos son auditados por las principales agencias internacionales para garantizar la seguridad en cada envío." },
+                catalog: { title: "Producto de Exportación", subtitle: "Soluciones a medida para importadores y fabricantes de alimentos.", p1t: "Suministro a granel", p2t: "Listo para la venta al por menor", p3t: "DESCRIPCIÓN DEL PRODUCTO", p1: "Tambores de acero de 300kg o contenedores IBC para uso industrial.", p2: "Marca propia o nuestra marca en frascos de vidrio premium.", p3: "Determinación (Resultado/Unidad)", monoColorLabel: "Color", monoColorValue: "23 mmpfund", monoMoistureLabel: "Humedad", monoMoistureValue: "16.2%", monoHmfLabel: "HMF", monoHmfValue: "6,8%", monoGlyphLabel: "Glifosato", monoGlyphValue: "6,8 Ppb", monoFructoseLabel: "Fructosa", monoFructoseValue: "39/40%", monoGlucoseLabel: "Glucosa", monoGlucoseValue: "32/33%", monoConductivityLabel: "Conductividad", monoConductivityValue: "0,45 uS", monoSensoryTitle: "Perfil Sensorial", monoSensory1: "<strong>Cristalización:</strong> Rápida-media.", monoSensory2: "<strong>Aroma:</strong> Floral.", monoSensory3: "<strong>Propiedades:</strong> Propiedades antioxidantes." },
+                contact: { title: "Contact us", btn: "Enviar Consulta" },
+                footer: { text: "© 2026 Apícola Rossini - Argentina - Exportadores de Miel Premium" }
             }
         };
 
         function changeLanguage(lang) {
             const t = translations[lang];
-
-            // Navegación
-            document.getElementById('nav-story').innerText = t.nav.story;
-            document.getElementById('nav-products').innerText = t.nav.products;
+            
+            // Update Nav
+            document.getElementById('brand-name').innerText = t.nav.brand;
+            document.getElementById('nav-about').innerText = t.nav.about;
             document.getElementById('nav-quality').innerText = t.nav.quality;
+            document.getElementById('nav-catalog').innerText = t.nav.catalog;
             document.getElementById('nav-contact').innerText = t.nav.contact;
 
-            // Hero
-            document.getElementById('hero-title').innerText = t.hero.title;
+            // Update Hero
+            document.getElementById('hero-badge').innerText = t.hero.badge;
+            document.getElementById('hero-title').innerHTML = t.hero.title;
             document.getElementById('hero-subtitle').innerText = t.hero.subtitle;
-            document.getElementById('hero-cta').innerText = t.hero.cta;
+            document.getElementById('hero-cta-primary').innerText = t.hero.ctaP;
+            document.getElementById('hero-cta-secondary').innerText = t.hero.ctaS;
 
-            // Story
-            document.getElementById('story-badge').innerText = t.story.badge;
-            document.getElementById('story-title').innerText = t.story.title;
-            document.getElementById('story-p1').innerText = t.story.p1;
-            document.getElementById('story-p2').innerText = t.story.p2;
-
-            // Certs
-            document.getElementById('certs-title').innerText = t.certs.title;
-
-            // Products Header
-            document.getElementById('prod-title').innerText = t.prod.title;
-            document.getElementById('prod-subtitle').innerText = t.prod.subtitle;
-
-            // Product 1
-            document.getElementById('p1-title').innerText = t.p1.title;
-            document.getElementById('p1-desc').innerText = t.p1.desc;
-            document.getElementById('p1-spec1').innerText = t.p1.spec1;
-            document.getElementById('p1-spec2').innerText = t.p1.spec2;
-
-            // Product 2
-            document.getElementById('p2-title').innerText = t.p2.title;
-            document.getElementById('p2-desc').innerText = t.p2.desc;
-            document.getElementById('p2-spec1').innerText = t.p2.spec1;
-            document.getElementById('p2-spec2').innerText = t.p2.spec2;
-
-            // Product 3
-            document.getElementById('p3-title').innerText = t.p3.title;
-            document.getElementById('p3-desc').innerText = t.p3.desc;
-            document.getElementById('p3-spec1').innerText = t.p3.spec1;
-            document.getElementById('p3-spec2').innerText = t.p3.spec2;
-
-            // Form
-            document.getElementById('form-title').innerText = t.form.title;
-            document.getElementById('form-subtitle').innerText = t.form.subtitle;
-            document.getElementById('label-name').innerText = t.form.labelName;
-            document.getElementById('label-company').innerText = t.form.labelCompany;
-            document.getElementById('label-country').innerText = t.form.labelCountry;
-            document.getElementById('input-country').placeholder = t.form.inputCountryPlaceholder;
-            document.getElementById('label-product').innerText = t.form.labelProduct;
-            document.getElementById('opt-multi').innerText = t.form.optMulti;
-            document.getElementById('opt-euca').innerText = t.form.optEuca;
-            document.getElementById('opt-bulk').innerText = t.form.optBulk;
-            document.getElementById('opt-other').innerText = t.form.optOther;
-            document.getElementById('label-message').innerText = t.form.labelMessage;
-            document.getElementById('input-message').placeholder = t.form.inputMessagePlaceholder;
-            document.getElementById('form-btn').innerText = t.form.btn;
-
-            // Actualizar estilos de los botones de idioma
-            if (lang === 'en') {
-                document.getElementById('lang-en').className = 'lang-active';
-                document.getElementById('lang-es').className = 'lang-inactive';
-            } else {
-                document.getElementById('lang-es').className = 'lang-active';
-                document.getElementById('lang-en').className = 'lang-inactive';
+            // Update About
+            document.getElementById('about-title').innerText = t.about.title;
+            for (let i = 1; i <= 14; i++) {
+                const el = document.getElementById(`about-text-${i}`);
+                const value = t.about[`text${i}`] || '';
+                el.innerText = value;
+                el.classList.toggle('hidden', value.trim() === '');
             }
+            document.getElementById('about-experience').innerText = t.about.exp;
+            document.getElementById('stat-1-title').innerText = t.about.s1;
+            document.getElementById('stat-1-desc').innerText = t.about.s1d;
+            document.getElementById('stat-2-title').innerText = t.about.s2;
+            document.getElementById('stat-2-desc').innerText = t.about.s2d;
+
+            // Update Quality
+            document.getElementById('quality-title').innerText = t.quality.title;
+            document.getElementById('quality-subtitle').innerText = t.quality.subtitle;
+
+            // Update Catalog
+            document.getElementById('catalog-title').innerText = t.catalog.title;
+            document.getElementById('catalog-subtitle').innerText = t.catalog.subtitle;
+            const p1Title = document.getElementById('p1-title');
+            const p2Title = document.getElementById('p2-title');
+            const p1Desc = document.getElementById('p1-desc');
+            const p2Desc = document.getElementById('p2-desc');
+
+            if (p1Title) p1Title.innerText = t.catalog.p1t;
+            if (p2Title) p2Title.innerText = t.catalog.p2t;
+            document.getElementById('p3-title').innerText = t.catalog.p3t;
+            if (p1Desc) p1Desc.innerText = t.catalog.p1;
+            if (p2Desc) p2Desc.innerText = t.catalog.p2;
+            document.getElementById('p3-desc').innerText = t.catalog.p3;
+            document.getElementById('mono-color-label').innerText = t.catalog.monoColorLabel;
+            document.getElementById('mono-color-value').innerText = t.catalog.monoColorValue;
+            document.getElementById('mono-moisture-label').innerText = t.catalog.monoMoistureLabel;
+            document.getElementById('mono-moisture-value').innerText = t.catalog.monoMoistureValue;
+            document.getElementById('mono-hmf-label').innerText = t.catalog.monoHmfLabel;
+            document.getElementById('mono-hmf-value').innerText = t.catalog.monoHmfValue;
+            document.getElementById('mono-glyph-label').innerText = t.catalog.monoGlyphLabel;
+            document.getElementById('mono-glyph-value').innerText = t.catalog.monoGlyphValue;
+            document.getElementById('mono-fructose-label').innerText = t.catalog.monoFructoseLabel;
+            document.getElementById('mono-fructose-value').innerText = t.catalog.monoFructoseValue;
+            document.getElementById('mono-glucose-label').innerText = t.catalog.monoGlucoseLabel;
+            document.getElementById('mono-glucose-value').innerText = t.catalog.monoGlucoseValue;
+            document.getElementById('mono-conductivity-label').innerText = t.catalog.monoConductivityLabel;
+            document.getElementById('mono-conductivity-value').innerText = t.catalog.monoConductivityValue;
+            document.getElementById('mono-sensory-title').innerText = t.catalog.monoSensoryTitle;
+            document.getElementById('mono-sensory-1').innerHTML = t.catalog.monoSensory1;
+            document.getElementById('mono-sensory-2').innerHTML = t.catalog.monoSensory2;
+            document.getElementById('mono-sensory-3').innerHTML = t.catalog.monoSensory3;
+
+            // Update Contact
+            document.getElementById('contact-title').innerText = t.contact.title;
+            document.getElementById('contact-btn').innerText = t.contact.btn;
+
+            // Update Footer
+            document.getElementById('footer-text').innerText = t.footer.text;
+
+            // Toggle Buttons
+            document.getElementById('lang-en').classList.toggle('opacity-40', lang !== 'en');
+            document.getElementById('lang-es').classList.toggle('opacity-40', lang !== 'es');
         }
 
-        // --- BACK TO TOP BUTTON SCRIPT ---
-        const backToTopBtn = document.getElementById('backToTop');
-
+        // Back to Top Logic
+        const bttBtn = document.getElementById('backToTop');
         window.onscroll = function() {
-            // Si el usuario baja más de 400px, mostramos el botón
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-                backToTopBtn.style.opacity = "1";
-                backToTopBtn.style.pointerEvents = "auto";
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                bttBtn.classList.remove('opacity-0', 'scale-0');
+                bttBtn.classList.add('opacity-100', 'scale-100');
             } else {
-                backToTopBtn.style.opacity = "0";
-                backToTopBtn.style.pointerEvents = "none";
+                bttBtn.classList.add('opacity-0', 'scale-0');
+                bttBtn.classList.remove('opacity-100', 'scale-100');
+            }
+        };
+        bttBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Envio de formulario con feedback
+        const form = document.getElementById('contact-form');
+        const formTs = document.getElementById('form-ts');
+        let currentLang = 'en';
+
+        formTs.value = Date.now().toString();
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            if (!form.reportValidity()) {
+                return;
+            }
+
+            const allowedServices = ['Bulk', 'Retail', 'PrivateLabel'];
+            const selectedService = form.querySelector('select[name="service"]').value;
+            if (!allowedServices.includes(selectedService)) {
+                alert(currentLang === 'es' ? 'Servicio inválido.' : 'Invalid service.');
+                return;
+            }
+
+            const btn = document.getElementById('contact-btn');
+            btn.innerText = currentLang === 'es' ? 'ENVIANDO...' : 'SENDING...';
+            btn.disabled = true;
+            
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch('enviar.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: data
+                });
+
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                
+                const result = await response.json(); // Esperamos el JSON del PHP
+                
+                if (result.status === 'success') {
+                    document.getElementById('form-success').classList.remove('hidden');
+                    form.reset();
+                    formTs.value = Date.now().toString();
+                } else {
+                    alert("Error: " + result.message);
+                }
+            } catch (error) {
+                alert("Server error. Please try again.");
+            } finally {
+                btn.innerText = currentLang === 'es' ? 'Enviar Consulta' : 'Send Inquiry';
+                btn.disabled = false;
             }
         };
 
-        backToTopBtn.onclick = function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        const originalChangeLanguage = changeLanguage;
+        changeLanguage = function(lang) {
+            currentLang = lang;
+            originalChangeLanguage(lang);
         };
     </script>
+
 </body>
 </html>
